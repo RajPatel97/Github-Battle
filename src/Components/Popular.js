@@ -1,7 +1,6 @@
-import { useState } from "react";
+import React, { useState } from "react";
 
-const Popular = () => {
-  const [selectedLanguage, setSelectedLanguage] = useState("All");
+const LanguagesNav = ({ selectedLanguage, setSelectedLanguage }) => {
   const languages = ["All", "JavaScript", "Ruby", "Java", "CSS", "Python"];
 
   return (
@@ -22,6 +21,19 @@ const Popular = () => {
         </li>
       ))}
     </ul>
+  );
+};
+
+const Popular = () => {
+  const [selectedLanguage, setSelectedLanguage] = useState("All");
+
+  return (
+    <React.Fragment>
+      <LanguagesNav
+        selectedLanguage={selectedLanguage}
+        setSelectedLanguage={setSelectedLanguage}
+      />
+    </React.Fragment>
   );
 };
 export default Popular;
