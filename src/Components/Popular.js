@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import propTypes from "prop-types";
 
 const LanguagesNav = ({ selectedLanguage, setSelectedLanguage }) => {
   const languages = ["All", "JavaScript", "Ruby", "Java", "CSS", "Python"];
@@ -22,6 +23,11 @@ const LanguagesNav = ({ selectedLanguage, setSelectedLanguage }) => {
       ))}
     </ul>
   );
+};
+
+LanguagesNav.Proptype = {
+  selectedLanguage: propTypes.string.isRequired,
+  setSelectedLanguage: propTypes.string.isRequired,
 };
 
 const Popular = () => {
