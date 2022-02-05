@@ -1,8 +1,13 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import propTypes from "prop-types";
 
 const LanguagesNav = ({ selectedLanguage, setSelectedLanguage }) => {
   const languages = ["All", "JavaScript", "Ruby", "Java", "CSS", "Python"];
+
+  useEffect(() => {
+    //fetch data here
+    console.log("first render");
+  });
 
   return (
     <ul className="flex-center">
