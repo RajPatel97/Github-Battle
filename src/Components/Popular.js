@@ -1,7 +1,6 @@
 import React, { useEffect, useState } from "react";
 import propTypes from "prop-types";
 import { fetchPopularRepos } from "../utils/api";
-import { isCompositeComponent } from "react-dom/cjs/react-dom-test-utils.production.min";
 
 const LanguagesNav = ({ selectedLanguage, setSelectedLanguage }) => {
   const languages = ["All", "JavaScript", "Ruby", "Java", "CSS", "Python"];
@@ -39,23 +38,41 @@ LanguagesNav.Proptype = {
 
 const Popular = () => {
   const [selectedLanguage, setSelectedLanguage] = useState("All");
-  const [repos, setRepos] = useState(null);
+  const [repos, setRepos] = useState({});
   const [error, setError] = useState(null);
 
   useEffect(() => {
-    fetchPopularRepos(selectedLanguage)
-      .then((repos) => {
-        setRepos(repos);
-      })
-      .catch(() => {
-        console.warn("Error Fetching", error);
-        setError("there was an error fetching the repos");
-        console.log(error);
-      });
-  }, [selectedLanguage]);
+    if (!repos[selectedLanguage]) {
+      fetchPopularRepos(selectedLanguage)
+        .then((data) => {
+          setRepos(({ repos }) => ({
+            repos: {
+              ...repos,
+              [selectedLanguage]: data,
+            },
+          }));
+        })
+        .catch(() => {
+          console.warn("Error Fetching", error);
+          setError("there was an error fetching the repos");
+          console.log(error);
+        });
+    } //if statement
+    // fetchPopularRepos(selectedLanguage)
+    //   .then((repos) => {
+    //     setRepos(repos);
+    //   })
+    //   .catch(() => {
+    //     console.warn("Error Fetching", error);
+    //     setError("there was an error fetching the repos");
+    //     console.log(error);
+    //   });
+  }, [selectedLanguage, repos, error]);
 
   const isLoading = () => {
-    return repos === null && error === null;
+    return !repos[selectedLanguage] && error === null;
+
+    // return repos === null && error === null;
   };
 
   return (
@@ -66,7 +83,9 @@ const Popular = () => {
       />
       {isLoading() && <p>Loading</p>}
       {error && <p>{error}</p>}
-      {repos && <p>{JSON.stringify(repos, null, 5)}</p>}
+      {repos[selectedLanguage] && (
+        <p>{JSON.stringify(repos[selectedLanguage], null, 5)}</p>
+      )}
     </React.Fragment>
   );
 };
