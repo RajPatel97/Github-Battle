@@ -37,15 +37,28 @@ const Popular = () => {
   const [error, setError] = useState(null);
 
   useEffect(() => {
+    // if (!repos[selectedLanguage]) {
+    //   fetchPopularRepos(selectedLanguage)
+    //     .then((data) => {
+    //       setRepos(({ repos }) => ({
+    //         repos: {
+    //           ...repos,
+    //           [selectedLanguage]: data,
+    //         },
+    //       }));
+    //       console.log("new data has been added to repos");
+    //       console.log(repos);
+    //     })
+    //     .catch(() => {
+    //       console.warn("Error Fetching", error);
+    //       setError("there was an error fetching the repos");
+    //       console.log(error);
+    //     });
+    // } //if statement
     if (!repos[selectedLanguage]) {
       fetchPopularRepos(selectedLanguage)
         .then((data) => {
-          setRepos(({ repos }) => ({
-            repos: {
-              ...repos,
-              [selectedLanguage]: data,
-            },
-          }));
+          setRepos({ ...repos, [selectedLanguage]: data }); //fixed caching issue
           console.log("new data has been added to repos");
           console.log(repos);
         })
@@ -78,12 +91,11 @@ const Popular = () => {
         selectedLanguage={selectedLanguage}
         setSelectedLanguage={setSelectedLanguage}
       />
-      {/* {isLoading && <p>Loading</p>}
+      {isLoading() && <p>... Loading</p>}
       {error && <p>{error}</p>}
       {repos[selectedLanguage] && (
         <p>{JSON.stringify(repos[selectedLanguage], null, 5)}</p>
-      )} */}
-      {repos && <p>{JSON.stringify(repos, null, 5)}</p>}
+      )}
     </React.Fragment>
   );
 };
