@@ -5,11 +5,6 @@ import { fetchPopularRepos } from "../utils/api";
 const LanguagesNav = ({ selectedLanguage, setSelectedLanguage }) => {
   const languages = ["All", "JavaScript", "Ruby", "Java", "CSS", "Python"];
 
-  useEffect(() => {
-    //fetch data here
-    console.log("first render");
-  });
-
   return (
     <ul className="flex-center">
       {languages.map((language) => (
@@ -51,6 +46,8 @@ const Popular = () => {
               [selectedLanguage]: data,
             },
           }));
+          console.log("new data has been added to repos");
+          console.log(repos);
         })
         .catch(() => {
           console.warn("Error Fetching", error);
@@ -67,7 +64,7 @@ const Popular = () => {
     //     setError("there was an error fetching the repos");
     //     console.log(error);
     //   });
-  }, [selectedLanguage, repos, error]);
+  }, [selectedLanguage]);
 
   const isLoading = () => {
     return !repos[selectedLanguage] && error === null;
@@ -81,11 +78,12 @@ const Popular = () => {
         selectedLanguage={selectedLanguage}
         setSelectedLanguage={setSelectedLanguage}
       />
-      {isLoading() && <p>Loading</p>}
+      {/* {isLoading && <p>Loading</p>}
       {error && <p>{error}</p>}
       {repos[selectedLanguage] && (
         <p>{JSON.stringify(repos[selectedLanguage], null, 5)}</p>
-      )}
+      )} */}
+      {repos && <p>{JSON.stringify(repos, null, 5)}</p>}
     </React.Fragment>
   );
 };
