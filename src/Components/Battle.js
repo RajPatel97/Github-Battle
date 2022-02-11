@@ -1,5 +1,10 @@
 import React, { useState } from "react";
-import { FaUserFriends, FaFighterJet, FaTrophy } from "react-icons/fa";
+import {
+  FaUserFriends,
+  FaFighterJet,
+  FaTrophy,
+  FaTimesCircle,
+} from "react-icons/fa";
 import propTypes from "prop-types";
 
 const Instructions = () => {
@@ -65,21 +70,77 @@ const PlayerInput = ({ onSubmit, label }) => {
   );
 };
 
-PlayerInput.Prototypes = {
+PlayerInput.prototypes = {
   onSubmit: propTypes.func.isRequired,
   label: propTypes.string.isRequired,
 };
 
+const PlayerPreview = ({ username, onReset, label }) => {
+  return (
+    <div className="column player">
+      <h3 className="player-label">{label}</h3>
+      <div className="row  bg-light">
+        <div className="player-info">
+          <img
+            className="avatar-small"
+            src={`https://github.com/${username}.png?size=200`}
+            alt={`Avatar for ${username}`}
+          />
+          <a href={`https://github.com/${username}`} className="link">
+            {username}
+          </a>
+        </div>
+        <button className="btn-clear flex-center" onClick={onReset}>
+          <FaTimesCircle color="rgb(194, 57, 42)" size={26} />
+        </button>
+      </div>
+    </div>
+  );
+};
+PlayerPreview.propTypes = {
+  username: propTypes.string.isRequired,
+  onReset: propTypes.func.isRequired,
+  label: propTypes.string.isRequired,
+};
+
 const Battle = () => {
+  const [playerOne, setPlayerOne] = useState(null);
+  const [playerTwo, setPlayerTwo] = useState(null);
+
   return (
     <React.Fragment>
       <Instructions />
-      <PlayerInput
-        label={"lable!"}
-        onSubmit={(value) => {
-          console.log("value!", value);
-        }}
-      />
+
+      <div className="players-container">
+        <h1 className="center-text header-lg">Players</h1>
+        <div className="row space-around">
+          {playerOne === null ? (
+            <PlayerInput
+              label={"Player One"}
+              onSubmit={(player) => setPlayerOne(player)}
+            />
+          ) : (
+            <PlayerPreview
+              username={playerOne}
+              label={"Player One"}
+              onReset={() => setPlayerOne(null)}
+            />
+          )}
+
+          {playerTwo === null ? (
+            <PlayerInput
+              label={"Player Two"}
+              onSubmit={(player) => setPlayerTwo(player)}
+            />
+          ) : (
+            <PlayerPreview
+              username={playerTwo}
+              label={"Player Two"}
+              onReset={() => setPlayerTwo(null)}
+            />
+          )}
+        </div>
+      </div>
     </React.Fragment>
   );
 };
