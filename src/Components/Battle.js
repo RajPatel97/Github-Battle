@@ -6,6 +6,7 @@ import {
   FaTimesCircle,
 } from "react-icons/fa";
 import propTypes from "prop-types";
+import Results from "./Results";
 
 const Instructions = () => {
   return (
@@ -106,6 +107,11 @@ PlayerPreview.propTypes = {
 const Battle = () => {
   const [playerOne, setPlayerOne] = useState(null);
   const [playerTwo, setPlayerTwo] = useState(null);
+  const [battle, setBattle] = useState(false);
+
+  if (battle === true) {
+    return <Results playerOne={playerOne} playerTwo={playerTwo} />;
+  }
 
   return (
     <React.Fragment>
@@ -140,6 +146,17 @@ const Battle = () => {
             />
           )}
         </div>
+        {playerOne && playerTwo && (
+          <button
+            className=" btn dark-btn btn-space"
+            onClick={(e) => {
+              e.preventDefault();
+              setBattle(true);
+            }}
+          >
+            Battle
+          </button>
+        )}
       </div>
     </React.Fragment>
   );
