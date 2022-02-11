@@ -1,5 +1,6 @@
-import React from "react";
+import React, { useState } from "react";
 import { FaUserFriends, FaFighterJet, FaTrophy } from "react-icons/fa";
+import propTypes from "prop-types";
 
 const Instructions = () => {
   return (
@@ -27,10 +28,58 @@ const Instructions = () => {
   );
 };
 
+const PlayerInput = ({ onSubmit, label }) => {
+  const [username, setUsername] = useState("");
+
+  const handleSubmit = (e) => {
+    e.preventDefault();
+
+    //onSubmit(username);//i think this is going to need to be changed
+    onSubmit(username);
+  };
+
+  const handleChange = (e) => {
+    setUsername(e.target.value);
+  };
+
+  return (
+    <form onSubmit={handleSubmit} action="">
+      <label htmlFor="username" className="player-label">
+        {label}
+      </label>
+      <div className="row player-inputs">
+        <input
+          type="text"
+          id="username"
+          className="input-light"
+          placeholder="github-username"
+          autoComplete="off"
+          value={username}
+          onChange={handleChange}
+        />
+        <button className="btn dark-btn" type="submit" disabled={!username}>
+          Submit
+        </button>
+      </div>
+    </form>
+  );
+};
+
+PlayerInput.Prototypes = {
+  onSubmit: propTypes.func.isRequired,
+  label: propTypes.string.isRequired,
+};
+
 const Battle = () => {
   return (
     <React.Fragment>
       <Instructions />
+      <PlayerInput
+        label={"lable!"}
+        onSubmit={(value) => {
+          console.log("value!", value);
+        }}
+      />
     </React.Fragment>
   );
 };
