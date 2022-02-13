@@ -1,6 +1,7 @@
 import { useEffect, useState } from "react";
 import { battle } from "../utils/api";
 import Card from "./Card";
+import Loading from "./Loading";
 import {
   FaCompass,
   FaBriefcase,
@@ -69,7 +70,7 @@ const Results = ({ playerOne, playerTwo, onReset }) => {
   });
 
   if (loading === true) {
-    return <p>...Loading</p>;
+    return <Loading text="Battling" />;
   }
 
   if (error) {

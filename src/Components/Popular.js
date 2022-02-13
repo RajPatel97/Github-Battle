@@ -2,6 +2,7 @@ import React, { useEffect, useState } from "react";
 import propTypes from "prop-types";
 import { fetchPopularRepos } from "../utils/api";
 import Card from "./Card";
+import Loading from "./Loading";
 
 import {
   FaUser,
@@ -115,7 +116,7 @@ const Popular = () => {
         selectedLanguage={selectedLanguage}
         setSelectedLanguage={setSelectedLanguage}
       />
-      {isLoading() && <p>... Loading</p>}
+      {isLoading() && <Loading text="Fetching Repos" />}
       {error && <p className="center-text error">{error}</p>}
       {repos[selectedLanguage] && <ReposGrid repos={repos[selectedLanguage]} />}
     </React.Fragment>
