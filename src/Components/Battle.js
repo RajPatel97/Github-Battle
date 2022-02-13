@@ -110,7 +110,17 @@ const Battle = () => {
   const [battle, setBattle] = useState(false);
 
   if (battle === true) {
-    return <Results playerOne={playerOne} playerTwo={playerTwo} />;
+    return (
+      <Results
+        playerOne={playerOne}
+        playerTwo={playerTwo}
+        onReset={() => {
+          setBattle(false);
+          setPlayerOne(null);
+          setPlayerTwo(null);
+        }}
+      />
+    );
   }
 
   return (
