@@ -1,5 +1,5 @@
 import propTypes from "prop-types";
-import { useState } from "react";
+import Hover from "./Hover";
 
 const styles = {
   container: {
@@ -23,15 +23,9 @@ const styles = {
   },
 };
 
-const Tooltip = ({ text, children }) => {
-  const [hovering, setHovering] = useState(false);
-
+const Tooltip = ({ text, children, hovering }) => {
   return (
-    <div
-      onMouseOver={() => setHovering(true)}
-      onMouseOut={() => setHovering(false)}
-      style={styles.container}
-    >
+    <div style={styles.container}>
       {hovering === true && <div style={styles.tooltip}>{text}</div>}
       {children}
     </div>
@@ -40,6 +34,7 @@ const Tooltip = ({ text, children }) => {
 
 Tooltip.propTypes = {
   text: propTypes.string.isRequired,
+  hovering: propTypes.bool.isRequired,
 };
 
-export default Tooltip;
+export default Hover(Tooltip);

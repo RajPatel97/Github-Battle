@@ -4,8 +4,8 @@ import Popular from "./Components/Popular";
 function App() {
   return (
     <div>
-      {/* <Battle /> */}
-      <Popular />
+      <Battle />
+      {/* <Popular /> */}
     </div>
   );
 }
