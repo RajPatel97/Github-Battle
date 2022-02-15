@@ -1,6 +1,6 @@
 import { useState } from "react";
 
-const Hover = (Component) => {
+const WithHover = (Component) => {
   const HoverComponent = (props) => {
     const [hovering, setHovering] = useState(false);
 
@@ -21,4 +21,4 @@ const Hover = (Component) => {
   return HoverComponent;
 };
 
-export default Hover;
+export default WithHover;

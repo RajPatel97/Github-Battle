@@ -1,5 +1,5 @@
 import propTypes from "prop-types";
-import Hover from "./Hover";
+import WithHover from "./WithHover";
 
 const styles = {
   container: {
@@ -37,4 +37,4 @@ Tooltip.propTypes = {
   hovering: propTypes.bool.isRequired,
 };
 
-export default Hover(Tooltip);
+export default WithHover(Tooltip);
