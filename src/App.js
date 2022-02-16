@@ -18,7 +18,7 @@ function App() {
             <Nav />
             <react.Suspense fallback={<Loading />}>
               <Routes>
-                <Route exact path="/" element={<Popular />} />
+                <Route exact path="/Github-Battle" element={<Popular />} />
                 <Route path="/battle" element={<Battle />} />
               </Routes>
             </react.Suspense>
