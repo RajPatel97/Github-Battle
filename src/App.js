@@ -1,9 +1,13 @@
-import { useState } from "react";
-import Battle from "./Components/Battle";
-import Popular from "./Components/Popular";
+import react, { useState } from "react";
+// import Battle from "./Components/Battle";
+// import Popular from "./Components/Popular";
 import ThemeContext from "./Contexts/theme";
 import Nav from "./Components/Nav";
 import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
+import Loading from "./Components/Loading";
+
+const Popular = react.lazy(() => import("./Components/Popular"));
+const Battle = react.lazy(() => import("./Components/Battle"));
 
 function App() {
   const [theme, setTheme] = useState("light");
@@ -13,14 +17,12 @@ function App() {
         <div className={theme}>
           <div className="container">
             <Nav />
-            <Routes>
-              <Route exact path="/" element={<Popular />}>
-                {/* <Popular /> */}
-              </Route>
-              <Route path="/battle" element={<Battle />}>
-                {/* <Battle /> */}
-              </Route>
-            </Routes>
+            <react.Suspense fallback={<Loading />}>
+              <Routes>
+                <Route exact path="/" element={<Popular />} />
+                <Route path="/battle" element={<Battle />} />
+              </Routes>
+            </react.Suspense>
           </div>
         </div>
       </ThemeContext.Provider>
