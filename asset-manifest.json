@@ -1,21 +1,21 @@
 {
   "files": {
-    "main.css": "/Github-Battle/static/css/main.e3298fd4.css",
-    "main.js": "/Github-Battle/static/js/main.562b89f9.js",
-    "static/js/108.e181631b.chunk.js": "/Github-Battle/static/js/108.e181631b.chunk.js",
-    "static/js/397.9f2c54df.chunk.js": "/Github-Battle/static/js/397.9f2c54df.chunk.js",
-    "static/js/787.e4ca40d3.chunk.js": "/Github-Battle/static/js/787.e4ca40d3.chunk.js",
-    "static/js/448.564267cd.chunk.js": "/Github-Battle/static/js/448.564267cd.chunk.js",
-    "index.html": "/Github-Battle/index.html",
-    "main.e3298fd4.css.map": "/Github-Battle/static/css/main.e3298fd4.css.map",
-    "main.562b89f9.js.map": "/Github-Battle/static/js/main.562b89f9.js.map",
-    "108.e181631b.chunk.js.map": "/Github-Battle/static/js/108.e181631b.chunk.js.map",
-    "397.9f2c54df.chunk.js.map": "/Github-Battle/static/js/397.9f2c54df.chunk.js.map",
-    "787.e4ca40d3.chunk.js.map": "/Github-Battle/static/js/787.e4ca40d3.chunk.js.map",
-    "448.564267cd.chunk.js.map": "/Github-Battle/static/js/448.564267cd.chunk.js.map"
+    "main.css": "/static/css/main.e3298fd4.css",
+    "main.js": "/static/js/main.a9e51a2b.js",
+    "static/js/108.e181631b.chunk.js": "/static/js/108.e181631b.chunk.js",
+    "static/js/397.9f2c54df.chunk.js": "/static/js/397.9f2c54df.chunk.js",
+    "static/js/787.e4ca40d3.chunk.js": "/static/js/787.e4ca40d3.chunk.js",
+    "static/js/448.564267cd.chunk.js": "/static/js/448.564267cd.chunk.js",
+    "index.html": "/index.html",
+    "main.e3298fd4.css.map": "/static/css/main.e3298fd4.css.map",
+    "main.a9e51a2b.js.map": "/static/js/main.a9e51a2b.js.map",
+    "108.e181631b.chunk.js.map": "/static/js/108.e181631b.chunk.js.map",
+    "397.9f2c54df.chunk.js.map": "/static/js/397.9f2c54df.chunk.js.map",
+    "787.e4ca40d3.chunk.js.map": "/static/js/787.e4ca40d3.chunk.js.map",
+    "448.564267cd.chunk.js.map": "/static/js/448.564267cd.chunk.js.map"
   },
   "entrypoints": [
     "static/css/main.e3298fd4.css",
-    "static/js/main.562b89f9.js"
+    "static/js/main.a9e51a2b.js"
   ]
 }
