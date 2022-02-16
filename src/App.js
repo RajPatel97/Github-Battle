@@ -1,9 +1,8 @@
 import react, { useState } from "react";
-// import Battle from "./Components/Battle";
-// import Popular from "./Components/Popular";
 import ThemeContext from "./Contexts/theme";
-import Nav from "./Components/Nav";
 import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
+
+import Nav from "./Components/Nav";
 import Loading from "./Components/Loading";
 
 const Popular = react.lazy(() => import("./Components/Popular"));

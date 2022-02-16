@@ -1,5 +1,4 @@
 import { useEffect, useState } from "react";
-import { Component } from "react/cjs/react.production.min";
 import propTypes from "prop-types";
 
 const Loading = ({ text, speed }) => {

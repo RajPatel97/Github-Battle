@@ -1,5 +1,5 @@
 import propTypes from "prop-types";
-//import WithHover from "./WithHover";
+
 import Hover from "./Hover";
 
 const styles = {

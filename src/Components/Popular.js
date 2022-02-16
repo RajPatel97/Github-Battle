@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from "react";
 import propTypes from "prop-types";
+
 import { fetchPopularRepos } from "../utils/api";
 import Card from "./Card";
 import Loading from "./Loading";
@@ -36,7 +37,7 @@ const LanguagesNav = ({ selectedLanguage, setSelectedLanguage }) => {
   );
 };
 
-LanguagesNav.Proptype = {
+LanguagesNav.propType = {
   selectedLanguage: propTypes.string.isRequired,
   setSelectedLanguage: propTypes.string.isRequired,
 };
@@ -96,8 +97,6 @@ const Popular = () => {
       fetchPopularRepos(selectedLanguage)
         .then((data) => {
           setRepos({ ...repos, [selectedLanguage]: data }); //fixed caching issue
-          console.log("new data has been added to repos");
-          console.log(repos);
         })
         .catch(() => {
           console.warn("Error Fetching", error);

@@ -1,6 +1,6 @@
-const id = "";
-const secretKey = "";
-const params = `client_id=${id}&client_secret=${secretKey}`;
+// const id = "";
+// const secretKey = "";
+// const params = `client_id=${id}&client_secret=${secretKey}`;
 
 const getErrorMsg = (message, username) => {
   if (message === "Not Found") {
